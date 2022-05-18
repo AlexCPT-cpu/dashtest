@@ -1,0 +1,303 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/image.png" style="width:190px;height:auto;" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body class="bg-dark">
+  <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+    <!-- sidebar -->
+    <div class="d-flex flex-column flex-shrink-0 p-4 text-white sidebar" style="width: 280px;height: 100vh;">
+      <div class="btn-close btn-close-white btn-close-sidebar">
+      </div>
+      <div class="text-center">
+        <a href="/">
+          <img width="150" src="./images/image.png"/>
+        </a>
+      </div>
+      <ul class="nav nav-pills flex-column mb-auto sidebar-menu">
+        <li>
+          <a href="index.html" class="nav-link active" aria-current="page">
+            <img class="icon" width="18" src="./images/icons/dashboard.png">
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="account.html" class="nav-link">
+            <img class="icon" width="18" src="./images/icons/account.png">
+            Account
+          </a>
+        </li>
+        <li>
+          <a href="calculator.html" class="nav-link">
+            <img class="icon" width="18" src="./images/icons/calculator.png">
+            Calculator
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link">
+            <img class="icon" width="18" src="./images/icons/swap.png">
+            Swap
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link">
+            <img class="icon" width="18" src="./images/icons/docs.png">
+            Docs
+          </a>
+        </li>
+      </ul>
+      
+      <div class="social">        
+        <ul class="social-list">
+          <li>
+            <a href="#"><img width="22" src="./images/icons/telegram.png"/></a>
+          </li>
+          <li>
+            <a href="#"><img width="22" src="./images/icons/medium.png"/></a>
+          </li>
+          <li>
+            <a href="#"><img width="22" src="./images/icons/twitter.png"/></a>
+          </li>
+          <li>
+            <a href="#"><img width="22" src="./images/icons/reddit.png"/></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- end sidebar -->
+    <div class="flex-lg-1 h-screen overflow-y-lg-auto">
+      <!-- header -->
+      <header class="p-4" style"color:white;"></header>
+            <div class="mb-menu">
+              <a class="mb-menu-btn">
+                <img width="25" src="./images/icons/menu.png"/>
+              </a>
+            </div>
+           
+                <button class="btn btn-header dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img class="icon" width="20" height="20" src="./images/icons/info.png"/>
+                </button>
+                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">Buy on Pancakeswap <img class="icon" width="13" height="13" src="./images/icons/resize.png"/></a></li>
+                  <li><a class="dropdown-item" href="#">Chart <img class="icon" width="13" height="13" src="./images/icons/resize.png"/></a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">ADD TOKEN TO WALLET</a></li>
+                </ul>              
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h1></h1>
+                      <div class="alert alert-danger" id="alert-error-https" style="display: none">
+                      </div>
+            
+                      <div id="prepare" style="text-align:center;">
+                        <button class="btn btn-primary" id="btn-connect">
+                          Connect wallet
+                        </button>
+                      </div>
+            
+                      <div id="connected" style="display: none;text-align:center;"">
+            
+                        <button class="btn btn-primary" id="btn-disconnect">
+                          Disconnect wallet
+                        </button>
+            
+                        <hr>
+            
+                        <div id="network" style="text-align:center;">
+                          <p style="color: white;">
+                            <strong>Connected blockchain:</strong> <span id="network-name"></span>
+                          </p>
+            
+                          <p style="color: white;">
+                            <strong style="color:white;">Selected account:</strong> <span id="selected-account"></span>
+                          </p>
+            
+                        </div>
+            
+                        <br>
+            
+                        <table style="color: white;"" class="table table-listing">
+                          <thead>
+                            <th>Balance</th>
+                          </thead>
+                          <tbody id="accounts">
+                          </tbody>
+                        </table>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+                <!-- We use simple <template> templating for the example -->
+                <div id="templates" style="display: none">
+                  <template id="template-balance">
+                    <div style="color: white;"">
+                      <p class="address"></p>
+                      <p class="balance"></p>
+                    </div>
+                  </template>
+                </div>
+            
+                <!--
+                  Use unpkg CDN to load all NPM packages to vanilla Javascript - read more at http://unpkg.com
+                  On your deployment, you properly either want to use a preprocessing tool like webpack
+                  to include these files, or extract NPM archives and manually host the files inside.
+                  TODO: Pin down all versions.
+                -->
+            
+                <script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+                <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+                <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+                <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+                <script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+            
+                <!-- This is our example code -->
+                <script type="text/javascript" src="./example.js"></script>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- end header -->
+      <!-- main -->
+      <main class="mt-4">
+        <div class="container text-white">
+          <div class="row">
+            <div class="col-sm-12">
+              <!-- card -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-4 text-center">
+                      <div class="card-inner">
+                        <h6>Market Cap</h6>
+                        <h5 class="mb-3">$000,000,000.00</h5>
+                        <h6>Circulating Supply</h6>
+                        <h5>000,000,000</h5>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 text-center">
+                      <div class="card-inner">
+                        <h6>TOKENPAD Price</h6>
+                        <h5 class="mb-3">$0.0000</h5>
+                        <h6>Backed Liquidity</h6>
+                        <h5>000.00%</h5>
+                      </div> 
+                    </div>
+                    <div class="col-sm-4 text-center">
+                      <div class="card-inner">
+                        <h6>Next Rebase</h6>
+                        <h5 class="mb-3">00:00:00</h5>
+                        <h6>Average TOKENPAD Holding</h6>
+                        <h5>$0,000.00</h5>
+                      </div>                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end card -->
+            </div>
+          </div>
+          <!-- end row -->
+          <div class="row">
+            <div class="col-sm-6">
+              <!-- card -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-inner">
+                    <h6>TOKENPAD Price</h6>
+                    <h4>$0.0000</h4>
+                    <div class="percent">
+                      +0.00%
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end card -->
+            </div>
+            <div class="col-sm-6">
+              <!-- card -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-inner">
+                    <h6>Market Value Of Treasury Assets</h6>
+                    <h4>$00,000,000.00</h4>
+                    <div class="percent">
+                      +00.00%
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end card -->
+            </div>
+          </div>
+          <!-- end row -->
+          <div class="row">
+            <div class="col-sm-6">
+              <!-- card -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-inner">
+                    <h6>BNB Liquidity Value</h6>
+                    <h4>$0,000,000.00</h4>
+                    <div class="percent">
+                      +0.00%
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end card -->
+            </div>
+            <div class="col-sm-6">
+              <!-- card -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-inner">
+                    <h6>Risk Free Value Market Value</h6>
+                    <h4>$0,000,000.00</h4>
+                    <div class="percent">
+                      +00.00%
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end card -->
+            </div>
+          </div>
+          <!-- end row -->
+        </div>
+      </main>
+      <!-- end main -->
+    </div>      
+  </div>
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery-3.6.0.slim.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
